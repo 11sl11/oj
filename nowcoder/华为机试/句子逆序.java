@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         new Main().run();
     }
-    
+     
     void run() {
         List<String> arr = new ArrayList<>();
         while(cin.hasNext()) {
