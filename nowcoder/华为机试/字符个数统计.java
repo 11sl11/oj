@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         new Main().run();
     }
-    
+     
     void run() {
         String ss = cin.nextLine();
         Set<Character> set = new HashSet<>();
