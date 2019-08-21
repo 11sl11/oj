@@ -53,4 +53,68 @@
 * 变成(x-a,y-b),(x',y')变成(x'-a,y'-b),整理得
 * x'=(x-a)cosα+(y-b)sinα+a
 * y'=-(x-a)sinα+(y-b)cosα+b
+*
+* 正方形判断：四边相等，两对角线相等的四边形
 */
+
+import java.util.*;
+
+public class Main {
+	Scanner cin = new Scanner(System.in);
+	public static void main(String[] args) {
+		new Main().run();
+	}
+
+	void run() {
+		while(cin.hasNext()) {
+			int n = cin.nextInt(), ans;
+			Cell[] cells = new Cell[4];
+			while(n-- > 0) {
+				for(int i=0; i<4; i++) {
+					cells[i] = new Cell(cin.nextInt(), cin.nextInt(), cin.nextInt(), cin.nextInt());
+				}
+				ans = Integer.MAX_VALUE;
+				for(int i0=0; i0<4; i0++) {
+					for(int i1=0; i1<4; i1++) {
+						for(int i2=0; i2<4; i2++) {
+							for(int i3=0; i3<4; i3++) {
+								if(dosth(cells[0].ps[i0], cells[1].ps[i1], cells[2].ps[i2], cells[3].ps[i3])) {
+									ans = Math.min(ans, i0+i1+i2+i3);
+								}
+							}
+						}
+					}
+				} System.out.println(ans<Integer.MAX_VALUE ? ans:-1);
+			}
+		}
+	}
+	
+	boolean dosth(int[]... ps) {
+		Set<Integer> set = new HashSet<>();
+		for(int i=0; i<4; i++) {
+			for(int j=i+1; j<4; j++) {
+				int d = dist(ps[i], ps[j]);
+				if(d == 0) return false;
+				set.add(d);
+			}
+		} return set.size() == 2;
+	}
+	
+	int dist(int[] p1, int[] p2) {
+		return (p1[0]-p2[0])*(p1[0]-p2[0]) + (p1[1]-p2[1])*(p1[1]-p2[1]);
+	}
+	
+	class Cell {
+		int[][] ps = new int[4][2];
+		int xt, yt;
+		Cell(int x, int y, int xt, int yt) {
+			ps[0][0] = x; ps[0][1] = y;
+			this.xt = xt; this.yt = yt;
+			
+			for(int i=1; i<4; i++) {
+				ps[i][0] = yt - ps[i-1][1] + xt;
+				ps[i][1] = ps[i-1][0] - xt + yt;
+			}
+		}
+	}
+}
