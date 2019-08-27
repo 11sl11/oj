@@ -18,6 +18,12 @@
 *
 */
 
+/**
+* 解题思路：
+* 用dp[i]表示到第i个数最大值，其转移方程为：
+* dp[i] = max(dp[i-1]+a[i], a[i]), a[i]要么加入连续序列中，要么重新开始
+*/
+
 import java.util.*;
 
 public class Main {
