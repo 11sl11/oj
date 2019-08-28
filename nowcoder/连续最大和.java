@@ -44,4 +44,22 @@ public class Main {
 			} System.out.println(ans);
 		}
 	}
+	
+//	void run() {
+//		while(cin.hasNext()) {
+//			String[] ss = cin.next().trim().split(",");
+//	        int[] arr = new int[ss.length];
+//	        for(int i=0; i<ss.length; i++) {
+//	            arr[i] = Integer.parseInt(ss[i]);
+//	        }
+//	        int ans = 0, tmp = 0, sum = Integer.MIN_VALUE;
+//	        for(int i=0; i<arr.length; i++) {
+//	            if(sum >= 0) {
+//	                tmp = sum + arr[i];
+//	            } else tmp = arr[i];
+//	            ans = Math.max(ans, tmp);
+//	            sum = tmp;
+//	        } System.out.println(ans);
+//		}
+//	}
 }
